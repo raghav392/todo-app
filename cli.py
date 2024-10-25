@@ -11,33 +11,13 @@ while True:
 
         todo = user_action[4:]
         todos = functions.get_todos()
-
-
-        #file = open('files/todos.txt', 'r')
-        #todos = file.readlines()
-        #file.close()
-
-        #with open('todos.txt', 'r') as file:
-         #   todos = file.readlines()
-
-
         todos.append(todo + '\n')
-
-        #file = open('todos.txt', 'w')
-        #file.writelines(todos)
-        #file.close()
-        #with open('todos.txt','w') as file:
-         #    file.writelines(todos)
         functions.write_todos(todos)
 
     elif  user_action.startswith('show'):
-        # file = open('files/todos.txt', 'r')
-        # todos = file.readlines()
-        # file.close()
+
         todos = functions.get_todos()
-        #with open('todos.txt','r') as file:
-        #    todos = file.readlines()
-      #  new_todos = [item.strip('\n') for item in todos]
+
         for index, item in enumerate(todos):
             item = item.strip('\n')
             row = f"{index + 1} - {item}"
@@ -50,7 +30,7 @@ while True:
             number = int(user_action[5:] )
             print(number)
             number = number - 1
-            todos = get_todos('todos.txt')
+            todos = functions.get_todos('todos.txt')
             print('here is todos existing', todos)
 
 
@@ -59,9 +39,8 @@ while True:
 
             print('here is how it will be', todos)
 
-           # with open('todos.txt', 'w') as file:
-           #     file.writelines(todos)
-            write_todos(todos)
+
+            functions.write_todos(todos)
         except ValueError:
             print("your command is not valid")
             continue
